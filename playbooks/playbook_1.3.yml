@@ -1,0 +1,17 @@
+---
+- name: Change system MOTD
+  hosts: homework
+  become: true
+
+  vars:
+    motd_text: "Как-то по-другому здравствуй чтоли\n"
+
+  tasks:
+    - name: Set new MOTD message
+      ansible.builtin.copy:
+        content: "{{ motd_text }}"
+        dest: /etc/motd
+        owner: root
+        group: root
+        mode: '0644'
+...

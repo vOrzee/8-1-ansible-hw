@@ -1,0 +1,26 @@
+---
+- name: Install and autostart tuned
+  hosts: homework
+  become: true
+
+  tasks:
+    - name: Enable universe repository
+      ansible.builtin.apt_repository:
+        repo: 'deb http://archive.ubuntu.com/ubuntu {{ ansible_distribution_release }} universe'
+        state: present
+
+    - name: Update apt cache
+      ansible.builtin.apt:
+        update_cache: yes
+
+    - name: Install tuned package
+      ansible.builtin.apt:
+        name: tuned
+        state: present
+
+    - name: Enable and start tuned service
+      ansible.builtin.service:
+        name: tuned
+        state: started
+        enabled: true
+...

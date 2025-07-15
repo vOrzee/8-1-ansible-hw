@@ -1,0 +1,8 @@
+---
+- name: Setup Apache
+  hosts: homework
+  become: true
+
+  roles:
+    - apache_install
+...

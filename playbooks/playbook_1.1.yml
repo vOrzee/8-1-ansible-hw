@@ -1,0 +1,23 @@
+---
+- name: Download and extract Kafka
+  hosts: homework
+  become: true
+
+  tasks:
+    - name: Create directory for kafka
+      ansible.builtin.file:
+        path: /opt/kafka
+        state: directory
+
+    - name: Download Kafka archive
+      ansible.builtin.get_url:
+        url: https://archive.apache.org/dist/kafka/3.7.0/kafka_2.13-3.7.0.tgz
+        dest: /opt/kafka/kafka.tgz
+        mode: '0644'
+
+    - name: Extract Kafka archive
+      ansible.builtin.unarchive:
+        src: /opt/kafka/kafka.tgz
+        dest: /opt/kafka/
+        remote_src: yes
+...

@@ -1,0 +1,22 @@
+---
+- name: Set dynamic MOTD using inline variable
+  hosts: homework
+  become: true
+
+  vars:
+    motd_text: |
+      Привет, системный администратор!
+      Хост: {{ ansible_hostname }}
+      IP-адрес: {{ ansible_default_ipv4.address }}
+
+      Хорошего дня!
+
+  tasks:
+    - name: Set MOTD with dynamic content
+      ansible.builtin.copy:
+        content: "{{ motd_text }}"
+        dest: /etc/motd
+        owner: root
+        group: root
+        mode: '0644'
+...
