@@ -21,6 +21,7 @@
 [Плейбук](./playbooks/playbook_1.2.yml)
 ![Вывод](./img/img1.2.1.png)
 ![Вывод](./img/img1.2.2.png)
+
 Пункт 3:
 [Плейбук](./playbooks/playbook_1.3.yml)
 ![Вывод](./img/img1.3.png)
